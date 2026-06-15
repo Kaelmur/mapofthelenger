@@ -1,0 +1,314 @@
+
+
+<div id="accordionExample" class="block md:hidden">
+  <div
+    class="border border-t-0 border-neutral-200 bg-white">
+    <h2 class="mb-0" id="headingTwo">
+      <button
+        class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)]"
+        type="button"
+        data-te-collapse-init
+        data-te-collapse-collapsed
+        data-te-target="#collapseTwo"
+        aria-expanded="false"
+        aria-controls="collapseTwo">
+        Фильтры
+        <span
+          class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </span>
+      </button>
+    </h2>
+    <div
+      id="collapseTwo"
+      class="!visible hidden"
+      data-te-collapse-item
+      aria-labelledby="headingTwo"
+      data-te-parent="#accordionExample">
+    <!--      Child 1 -->
+      <div class="px-5 py-4">
+        <div
+          class="border border-t-0 border-neutral-200 bg-white">
+          <h2 class="mb-0" id="headingArea">
+            <button
+              class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)]"
+              type="button"
+              data-te-collapse-init
+              data-te-collapse-collapsed
+              data-te-target="#collapseArea"
+              aria-expanded="false"
+              aria-controls="collapseArea">
+              Районы
+              <span
+                class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </span>
+            </button>
+          </h2>
+          <div
+            id="collapseArea"
+            class="!visible hidden"
+            data-te-collapse-item
+            aria-labelledby="headingArea"
+            data-te-parent="#collapseTwo">
+            <div class="px-5 py-4">
+              <section *ngIf="areas">
+              <fieldset class="px-4 my-2" *ngIf="areas.length">
+                <legend class="my-4 font-bold">Районы:</legend>
+
+                <div class="flex items-center mb-4" *ngFor="let area of areas">
+                  <input (change)="toggleArea(area.id)" [checked]="activeAreas.indexOf(area.id) != -1" id="area-{{area.id}}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-green-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                  <label for="area-{{area.id}}" class="ml-2 text-sm font-medium text-gray-900">{{area.title_ru}}</label>
+                </div>
+              </fieldset>
+              </section>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <!--      Child 1 -->
+      <!--      Child 2 -->
+      <div class="px-5 py-4">
+        <div
+          class="border border-t-0 border-neutral-200 bg-white">
+          <h2 class="mb-0" id="headingPlace">
+            <button
+              class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)]"
+              type="button"
+              data-te-collapse-init
+              data-te-collapse-collapsed
+              data-te-target="#collapsePlace"
+              aria-expanded="false"
+              aria-controls="collapsePlace">
+              Места ({{places !=  null ? places.length : 0}})
+              <span
+                class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </span>
+            </button>
+          </h2>
+          <div
+            id="collapsePlace"
+            class="!visible hidden"
+            data-te-collapse-item
+            aria-labelledby="headingPlace"
+            data-te-parent="#collapseTwo">
+            <div class="px-5 py-4">
+              <section *ngIf="places">
+                <fieldset class="px-4 my-2" *ngIf="places.length">
+                  <legend class="my-4 font-bold">Места:</legend>
+                  <input type="text" class="rounded w-full mt-2 mb-3 border-solid border-2 border-black p-2"  [(ngModel)]="search_word">
+                  <section *ngFor="let place of places">
+                    <div class="flex items-center mb-4" *ngIf="search_word.length == 0 || place.title_ru.toLowerCase().search(search_word.toLowerCase()) != -1 || place.title_kz.toLowerCase().search(search_word.toLowerCase()) != -1">
+                      <input (change)="togglePlaces(place.id)" [checked]="activePlaces.indexOf(place.id) != -1" id="place-{{place.id}}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                      <label for="place-{{place.id}}" class="ml-2 text-sm font-medium text-gray-900">{{place.title_ru}}</label>
+                    </div>
+                  </section>
+
+                </fieldset>
+              </section>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--      Child 2 -->
+    </div>
+  </div>
+</div>
+
+
+<sidebarjs-element>
+  <div class="py-4 overflow-y-auto px-4">
+    <div class="text-right px-2 py-2">
+      <button sidebarjs-toggle type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
+        <i class="fa-solid fa-xmark text-white"></i>
+      </button>
+    </div>
+    <ul class="space-y-2 font-medium">
+      <div id="accordion-collapse" data-accordion="collapse">
+        <div class="my-4" *ngIf="areas != null">
+          <h2 id="area-heading-1" >
+            <button type="button" class="bg-emerald-600 flex items-center justify-between w-full p-5 font-medium text-left text-white border border-b-0 border-green-200 rounded-t-xl focus:ring-4 focus:ring-green-200 hover:bg-emerald-600" data-accordion-target="#area-body-1" aria-expanded="true" aria-controls="area-body-1">
+              <span>Районы</span>
+              <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+          </h2>
+          <div id="area-body-1" class="hidden" aria-labelledby="area-heading-1">
+            <fieldset class="px-4 my-2" *ngIf="areas.length">
+              <legend class="my-4 font-bold">Районы:</legend>
+
+              <div class="flex items-center mb-4" *ngFor="let area of areas">
+                <input (change)="toggleArea(area.id)" [checked]="activeAreas.indexOf(area.id) != -1" id="area-{{area.id}}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-green-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                <label for="area-{{area.id}}" class="ml-2 text-sm font-medium text-gray-900">{{area.title_ru}}</label>
+              </div>
+
+            </fieldset>
+          </div>
+        </div>
+        <div class="my-4" *ngIf="places != null">
+          <h2 id="place-heading-1" >
+            <button type="button" class="bg-emerald-600 flex items-center justify-between w-full p-5 font-medium text-left text-white border border-b-0 border-green-200 rounded-t-xl focus:ring-4 focus:ring-green-200 hover:bg-emerald-600" data-accordion-target="#place-body-1" aria-expanded="true" aria-controls="place-body-1">
+              <span>Места ({{places.length}})</span>
+              <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+          </h2>
+          <div id="place-body-1" class="hidden" aria-labelledby="place-heading-1">
+            <fieldset class="px-4 my-2" *ngIf="places.length">
+              <legend class="my-4 font-bold">Места:</legend>
+              <input type="text" class="rounded w-full mt-2 mb-3 border-solid border-2 border-black p-2"  [(ngModel)]="search_word">
+              <section *ngFor="let place of places">
+                <div class="flex items-center mb-4" *ngIf="search_word.length == 0 || place.title_ru.toLowerCase().search(search_word.toLowerCase()) != -1 || place.title_kz.toLowerCase().search(search_word.toLowerCase()) != -1">
+                  <input (change)="togglePlaces(place.id)" [checked]="activePlaces.indexOf(place.id) != -1" id="place-{{place.id}}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                  <label for="place-{{place.id}}" class="ml-2 text-sm font-medium text-gray-900">{{place.title_ru}}</label>
+                </div>
+              </section>
+
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="my-4">
+          <h2 id="filter-heading-1" >
+            <a class="bg-emerald-600 flex items-center justify-between w-full p-5 font-medium text-left text-white border border-b-0 border-green-200 rounded-t-xl focus:ring-4 focus:ring-green-200 hover:bg-emerald-600" data-accordion-target="#filter-body-1" aria-expanded="true" aria-controls="filter-body-1">
+              <span>Фильтры</span>
+              <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+          </h2>
+          <div id="filter-body-1" class="hidden min-h-screen" aria-labelledby="filter-heading-1">
+            <section *ngIf="SystemData != null">
+              <fieldset class="px-4 my-2" *ngIf="SystemData.sanitary">
+                <legend class="my-4 font-bold">Состояние насаждений:</legend>
+                <ng-selectize [(ngModel)]="sanitary_filter"  class="my-4 w-4/12" [config]="MULTI_SELECT_CONFIG" [options]="SystemData.sanitary" [placeholder]="'Типы состояний'"></ng-selectize>
+              </fieldset>
+              <fieldset class="px-4 my-2" *ngIf="SystemData.breed">
+                <legend class="my-4 font-bold">Вид насаждения:</legend>
+                <ng-selectize [(ngModel)]="breed_filter"  class="my-4 w-4/12" [config]="MULTI_SELECT_CONFIG" [options]="SystemData.breed" [placeholder]="'Типы деревьев'"></ng-selectize>
+              </fieldset>
+              <fieldset class="px-4 my-2" *ngIf="SystemData.type">
+                <legend class="my-4 font-bold">Тип насаждения:</legend>
+                <ng-selectize [(ngModel)]="type_filter"  class="my-4 w-4/12" [config]="MULTI_SELECT_CONFIG" [options]="SystemData.type" [placeholder]="'Тип насаждения'"></ng-selectize>
+              </fieldset>
+              <button (click)="toggleFilters()" type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2">Использовать фильтры</button>
+            </section>
+          </div>
+        </div>
+
+      </div>
+    </ul>
+  </div>
+</sidebarjs-element>
+
+
+      <div class="relative">
+        <a sidebarjsOpen href="#" class="hidden md:block absolute right-1 z-20 top-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none" type="button">
+          <i class="fas fa-bars text-white"></i>
+        </a>
+        <div
+          id="map"
+          class="z-10"
+          leaflet
+          [leafletOptions]="options"
+          [leafletLayers]="Layer"
+          (leafletMapZoomEnd) = "onZoom($event)"
+          (leafletMapMoveEnd) = "onZoom($event)"
+        >
+        </div>
+
+
+      </div>
+
+    <!-- drawer init and show -->
+<ngx-smart-modal #myModal identifier="myModal">
+
+  <div class="w-full bg-white border border-gray-200 rounded-lg shadow">
+    <section *ngIf="activeMarker">
+    <a href="#">
+      <div
+        [ngStyle]="{backgroundImage: 'url(' + getBreedImage(activeMarker.breed_id) + ')', height: '350px',backgroundPosition:'center',backgroundSize:'cover',backgroundRepeat:'no-repeat'}"
+      >
+      </div>
+      <img  class="rounded-t-lg" [src]='' alt="" />
+    </a>
+    <div class="p-5">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <p>Геопозиция: <b>{{getLatLng(activeMarker.geocode)}}</b></p>
+        <p>Номер: <b>{{activeMarker.id}}</b></p>
+        <p *ngIf="activeMarker.breed_id">Вид насаждения: <b>{{getTitle("breed",activeMarker.breed_id)}}</b></p>
+        <p *ngIf="activeMarker.event_id">Событие: <b>{{getTitle("event",activeMarker.event_id)}}</b></p>
+        <p *ngIf="activeMarker.sanitary_id">Состояние: <b>{{getTitle("sanitary",activeMarker.sanitary_id)}}</b></p>
+        <p *ngIf="activeMarker.status_id">Статус: <b>{{getTitle("status",activeMarker.status_id)}}</b></p>
+        <p *ngIf="activeMarker.type_id">Тип: <b>{{getTitle("type",activeMarker.type_id)}}</b></p>
+        <p *ngIf="activeMarker.category_id">Категория:<b>{{getTitle("category",activeMarker.category_id)}}</b></p>
+        <p>Возраст: <b>{{activeMarker.age}} в годах</b></p>
+        <p>Диаметр: <b>{{activeMarker.diameter}} см.</b></p>
+        <p>Высота: <b>{{activeMarker.height}} м.</b></p>
+      </div>
+      <div class="flex w-full px-4 text-right justify-end my-2">
+        <a target="_blank" href="{{baseApi + '/make-report/' + activeMarker.id.toString()}}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+          Сообщить об ошибке
+        </a>
+      </div>
+    </div>
+    </section>
+  </div>
+
+</ngx-smart-modal>
+<ngx-smart-modal #specialDataModal identifier="specialDataModal" customClass="large-modal">
+
+  <div class="w-full bg-white border border-gray-200 rounded-lg shadow">
+    <section *ngIf="staticArea">
+      <a href="#">
+        <div
+          [ngStyle]="{backgroundImage: 'url(' + staticArea.image_url + ')', height: '350px',backgroundPosition:'center',backgroundSize:'contain',backgroundRepeat:'no-repeat'}"
+        >
+        </div>
+        <img  class="rounded-t-lg" [src]='' alt="" />
+      </a>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-5">
+        <p class="text-2xl xl:text-3xl 2xl:text-4xl ml-5"><b>{{staticArea.title}}</b></p>
+        <p class="text-sm my-5 px-3" [innerHTML]="staticArea.description"></p>
+        <p *ngIf="staticArea.table" class="text-sm my-2 px-3" [innerHTML]="staticArea.table"></p>
+        <p class="text-sm my-5 px-3" [innerHTML]="staticArea.sub_desc"></p>
+      </div>
+    </section>
+  </div>
+
+</ngx-smart-modal>
+    <!-- drawer component -->
+
+
