@@ -123,7 +123,7 @@ export class AppComponent implements OnInit {
       }),
     ],
     zoom: 14,
-    center: latLng(42.183, 69.8839),
+    center: latLng(51.2333, 51.3667),
   };
   MULTI_SELECT_CONFIG: any = Object.assign(
     {},
