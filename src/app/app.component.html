@@ -288,6 +288,28 @@
   </div>
 
 </ngx-smart-modal>
+<ngx-smart-modal #bushModal identifier="bushModal">
+  <div class="w-full bg-white border border-gray-200 rounded-lg shadow">
+    <section *ngIf="activeBush">
+      <div
+        *ngIf="activeBush.breed_id"
+        [ngStyle]="{backgroundImage: 'url(' + getBreedImage(activeBush.breed_id) + ')', height: '350px', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}"
+      ></div>
+      <div class="p-5">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4">
+          <p>Номер: <b>{{activeBush.id}}</b></p>
+          <p *ngIf="activeBush.breed">Вид насаждения: <b>{{activeBush.breed.title_ru}}</b></p>
+          <p *ngIf="activeBush.type">Тип: <b>{{activeBush.type.title_ru}}</b></p>
+          <p *ngIf="activeBush.sanitary">Состояние: <b>{{activeBush.sanitary.title_ru}}</b></p>
+          <p *ngIf="activeBush.place">Место: <b>{{activeBush.place.title_ru}}</b></p>
+          <p>Длина: <b>{{activeBush.length}} м</b></p>
+          <p>Высота: <b>{{activeBush.height}} м</b></p>
+          <p>Ширина: <b>{{activeBush.width}} м</b></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</ngx-smart-modal>
 <ngx-smart-modal #specialDataModal identifier="specialDataModal" customClass="large-modal">
 
   <div class="w-full bg-white border border-gray-200 rounded-lg shadow">
@@ -310,5 +332,4 @@
 
 </ngx-smart-modal>
     <!-- drawer component -->
-
 

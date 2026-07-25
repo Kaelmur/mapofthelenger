@@ -22,6 +22,8 @@ import { SystemData } from '../common/models/SystemData';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { environment } from '../environments/environment';
 import { Collapse, initTE } from 'tw-elements';
+import { BushService } from '../common/services/bush.service';
+import { Bush } from '../common/models/Bush';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit {
   areas: Area[] = [];
   places: Place[] = [];
   makers: Marker[] = [];
+  bushes: Bush[] = [];
   Layer: any[] = [];
   //@ts-ignore
   SystemData: SystemData;
@@ -103,6 +106,7 @@ export class AppComponent implements OnInit {
   });
   //@ts-ignore
   activeMarker: Marker;
+  activeBush: Bush | null = null;
   selectedTreeIcon = icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/148/148767.png',
     iconSize: [25, 25],
@@ -152,6 +156,7 @@ export class AppComponent implements OnInit {
     private areaService: AreaService,
     private placeService: PlaceService,
     private markerService: MarkerService,
+    private bushService: BushService,
     private systemService: SystemDataService,
   ) {
     this.initializeSystemData();
@@ -197,7 +202,27 @@ export class AppComponent implements OnInit {
       this.activePlaces = this.activePlaces.filter((activeItemId) =>
         this.places.some((place) => place.id === activeItemId),
       );
+      this.initializeBush();
+    });
+  }
+
+  initializeBush() {
+    if (!this.activePlaces.length) {
+      this.bushes = [];
       this.recreateLayer();
+      return;
+    }
+
+    this.bushService.getAll(this.activePlaces).subscribe({
+      next: (data) => {
+        this.bushes = data;
+        this.recreateLayer();
+      },
+      error: (error) => {
+        this.bushes = [];
+        console.error('Не удалось загрузить линейные посадки кустов', error);
+        this.recreateLayer();
+      },
     });
   }
 
@@ -245,6 +270,28 @@ export class AppComponent implements OnInit {
     this.Layer.push(data);
   }
 
+  AddBushLayer(bush: Bush) {
+    try {
+      const data = geoJSON(JSON.parse(bush.geocode));
+      data.setStyle({
+        color: '#15803d',
+        weight: 10,
+        opacity: 0.9,
+        lineCap: 'round',
+        lineJoin: 'round',
+      });
+      data.on('click', () => this.clickFeatureBush(bush));
+      this.Layer.push(data);
+    } catch (error) {
+      console.warn(`Некорректная геометрия кустов #${bush.id}`, error);
+    }
+  }
+
+  clickFeatureBush(bush: Bush) {
+    this.activeBush = bush;
+    this.ngxSmartModalService.getModal('bushModal').open();
+  }
+
   toggleArea(id: number) {
     let index = this.activeAreas.indexOf(id);
     index == -1 ? this.activeAreas.push(id) : this.activeAreas.splice(index, 1);
@@ -256,7 +303,7 @@ export class AppComponent implements OnInit {
     index == -1
       ? this.activePlaces.push(id)
       : this.activePlaces.splice(index, 1);
-    this.recreateLayer();
+    this.initializeBush();
   }
 
   getBreedImage(id: number) {
@@ -302,8 +349,13 @@ export class AppComponent implements OnInit {
           this.AddLayer(item.geocode, item.bg_color, item.title_ru);
         }
       });
-      this.actualLayer = this.Layer;
+      this.bushes.forEach((bush) => {
+        if (this.activePlaces.includes(bush.place_id)) {
+          this.AddBushLayer(bush);
+        }
+      });
     }
+    this.actualLayer = this.Layer;
   }
 
   clickFeauturePoint(e: LeafletMouseEvent, item: Marker) {
