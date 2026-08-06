@@ -262,8 +262,8 @@ export class AppComponent implements OnInit {
       permanent: true,
       offset: [0, 12],
     });
-    // Don't open special modal for Дендропарк (id 7)
-    if (area_id !== 7) {
+    // Don't open special modal for Дендропарк (id 7) and Жасыл белдеу (id 8)
+    if (area_id !== 7 && area_id !== 8) {
       data.on('click', (e) => this.clickSpecialArea(e, area_id));
     }
     // @ts-ignore
