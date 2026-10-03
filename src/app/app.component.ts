@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
     preferCanvas: true,
     layers: [
       // tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',  {subdomains:['mt0','mt1','mt2','mt3'], maxZoom: 21, maxNativeZoom: 20, attribution: '...' })
-      tileLayer('http://tile4.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=4', {
+      tileLayer('https://tile4.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=4', {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         maxZoom: 18,
         maxNativeZoom: 18,
@@ -127,7 +127,7 @@ export class AppComponent implements OnInit {
       }),
     ],
     zoom: 14,
-    center: latLng(51.2333, 51.3667),
+    center: latLng(51.1678, 52.9950),
   };
   MULTI_SELECT_CONFIG: any = Object.assign(
     {},

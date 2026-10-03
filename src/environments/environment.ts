@@ -1,6 +1,6 @@
 export const environment = {
-  baseApiUrl: 'https://zhasyluralsk.kz/api',
-  baseUrl: 'https://zhasyluralsk.kz',
-  baseUrlImage: 'https://zhasyluralsk.kz/storage/uploads/',
-  baseBreedsImage: 'https://zhasyluralsk.kz/images/breeds/',
+  baseApiUrl: 'https://zhasylaksai.kz/api',
+  baseUrl: 'https://zhasylaksai.kz',
+  baseUrlImage: 'https://zhasylaksai.kz/storage/uploads/',
+  baseBreedsImage: 'https://zhasylaksai.kz/images/breeds/',
 };

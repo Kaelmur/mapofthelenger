@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:aksai": "ng build --configuration production --base-href /map-app/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
